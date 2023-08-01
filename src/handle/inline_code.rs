@@ -26,8 +26,10 @@ pub fn inline_code_handle(
    // If there is a single grave accent on its own in the code, use a fence of
    // two.
    // If there are two in a row, use one.
-   let p = format!("(^|[^`]){}([^`]|$)", sequence);
-   while Regex::new(p.as_str()).unwrap().is_match(value.as_str()) {
+   while Regex::new(format!("(^|[^`]){}([^`]|$)", sequence).as_str())
+      .unwrap()
+      .is_match(value.as_str())
+   {
       sequence += "`";
    }
 
