@@ -51,7 +51,7 @@ pub fn definition_handle(
 
    let sub_exit = if
    // If there’s no url, or…
-   !node.url.is_empty() ||
+   node.url.is_empty() ||
       // If there are control characters or whitespace.
       regex!(r"[\u0000- \u007F]").is_match(node.url.as_str())
    {

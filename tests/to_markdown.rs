@@ -37,7 +37,7 @@ mod tests {
       {
          let mut markdown_output_path = d.clone();
          markdown_output_path.push("tests/OUTPUT.md");
-         fs::write(markdown_output_path, markdown_output).expect("Unable to write file");
+         fs::write(markdown_output_path, markdown_output.clone()).expect("Unable to write file");
       }
 
       assert!(markdown_output == expected);
