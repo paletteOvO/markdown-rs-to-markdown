@@ -35,7 +35,6 @@ pub fn image_handle(
                before: value.clone(),
                after: "]".to_owned(),
                encode: vec![],
-               // ...tracker.current()
             },
          )
          .as_str(),
@@ -77,7 +76,6 @@ pub fn image_handle(
                   before: value.clone(),
                   after: if node.title.is_some() { " " } else { ")" }.to_owned(),
                   encode: vec![],
-                  // ...tracker.current()
                },
             )
             .as_str(),

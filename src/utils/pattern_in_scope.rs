@@ -5,7 +5,7 @@ pub fn pattern_in_scope(stack: &[ConstructName], pattern: &Unsafe) -> bool {
       && !list_in_scope(stack, &pattern.not_in_construct, false)
 }
 
-fn list_in_scope(stack: &[ConstructName], list: &Vec<ConstructName>, none: bool) -> bool {
+fn list_in_scope(stack: &[ConstructName], list: &[ConstructName], none: bool) -> bool {
    if list.is_empty() {
       return none;
    }

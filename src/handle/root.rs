@@ -1,17 +1,8 @@
-// import {phrasing} from 'mdast-util-phrasing'
-
 use super::Handle;
 use markdown::mdast::Node;
 
 use crate::types::{state::State, track::Info, Parents};
 
-/**
- * @param {Root} node
- * @param {Parents | undefined} _
- * @param {State} state
- * @param {Info} info
- * @returns {string}
- */
 pub fn root(_node: &Node, _: Option<&Parents>, state: &mut State, info: &mut Info) -> String {
    let node = if let Node::Root(node) = _node {
       node

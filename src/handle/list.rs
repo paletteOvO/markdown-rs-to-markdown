@@ -56,7 +56,7 @@ pub fn list(_node: &Node, _parent: Option<&Parents>, state: &mut State, info: &m
             item.children()
          }).and_then(|children| {
             children.get(0)
-         }).map(|_child| ()).is_none() &&
+         }).is_none() &&
          // Directly in two other list items:
          state.stack[state.stack.len() - 1] == ConstructName::List &&
          state.stack[state.stack.len() - 2] == ConstructName::ListItem &&

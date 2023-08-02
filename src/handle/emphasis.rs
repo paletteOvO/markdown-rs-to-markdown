@@ -18,9 +18,11 @@ fn emphasis_handle(
 
    let marker = &state.options.emphasis;
    let marker_s: &str = <&str>::from(marker);
+
    let exit = state.enter("emphasis");
    let mut tracker = state.create_tracker(info.track_fields.as_ref().unwrap());
    let mut value = tracker.r#move(marker_s).to_owned();
+
    value += tracker.r#move(
       state
          .container_phrasing(
@@ -35,7 +37,9 @@ fn emphasis_handle(
          )
          .as_str(),
    );
+
    value += tracker.r#move(marker_s);
+
    exit(state);
 
    value

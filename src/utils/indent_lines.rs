@@ -13,13 +13,11 @@ pub fn indent_lines(value: &str, map: Map) -> String {
    let mut start = 0;
    let mut line = 0;
 
-   // result.push(map(value, line, value.is_empty()));
-
    for value_match in EOL.find_iter(value) {
       let v = value[start..value_match.start()].as_ref();
       result.push(map(v, line, v.is_empty()));
       result.push(value_match.as_str().to_owned());
-      start = value_match.start() + value_match.as_str().len();
+      start = value_match.end();
       line += 1;
    }
 

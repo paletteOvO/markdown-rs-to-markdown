@@ -1,18 +1,9 @@
-//  imageReference.peek = imageReferencePeek
-
 use markdown::mdast::{Node, ReferenceKind};
 
 use crate::types::{state::State, track::Info, Association, Parents, SafeConfig};
 
 use super::Handle;
 
-/**
- * @param {ImageReference} node
- * @param {Parents | undefined} _
- * @param {State} state
- * @param {Info} info
- * @returns {string}
- */
 pub fn image_reference_handle(
    _node: &Node,
    _: Option<&Parents>,
@@ -25,7 +16,7 @@ pub fn image_reference_handle(
       panic!("Expected node to be of type Node::ImageReference");
    };
 
-   let r#type = node.reference_kind;
+   let kind = node.reference_kind;
    let exit = state.enter("imageReference");
    let sub_exit = state.enter("label");
    let mut tracker = state.create_tracker(info.track_fields.as_ref().unwrap());
@@ -36,7 +27,6 @@ pub fn image_reference_handle(
          before: value.clone(),
          after: "]".to_owned(),
          encode: vec![],
-         //   ...tracker.current()
       },
    );
    value += tracker.r#move(format!("{}][", alt).as_str());
@@ -46,10 +36,7 @@ pub fn image_reference_handle(
    let stack = std::mem::take(&mut state.stack);
    state.stack = vec![];
    let sub_exit = state.enter("reference");
-   // Note: for proper tracking, we should reset the output positions when we end
-   // up making a `shortcut` reference, because then there is no brace output.
-   // Practically, in that case, there is no content, so it doesn’t matter that
-   // we’ve tracked one too many characters.
+
    let reference = state.safe(
       state
          .association_id(Association {
@@ -61,20 +48,19 @@ pub fn image_reference_handle(
          before: value.clone(),
          after: "]".to_owned(),
          encode: vec![],
-         //   ...tracker.current()
       },
    );
    sub_exit(state);
    state.stack = stack;
    exit(state);
 
-   if r#type == ReferenceKind::Full && alt.is_empty() && !reference.is_empty() {
+   if kind == ReferenceKind::Full && alt.is_empty() && !reference.is_empty() {
       format!(
          "{}{}",
          value,
          tracker.r#move(format!("{}]", reference).as_str())
       )
-   } else if r#type == ReferenceKind::Shortcut {
+   } else if kind == ReferenceKind::Shortcut {
       // Remove the unwanted `[`.
       return value[..value.len() - 1].to_owned();
    } else {

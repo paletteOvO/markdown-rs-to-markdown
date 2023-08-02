@@ -9,13 +9,6 @@ use crate::{
 
 use super::Handle;
 
-/**
- * @param {Heading} node
- * @param {Parents | undefined} _
- * @param {State} state
- * @param {Info} info
- * @returns {string}
- */
 pub fn heading_handle(
    _node: &Node,
    _: Option<&Parents>,

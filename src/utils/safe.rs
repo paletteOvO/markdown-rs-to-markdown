@@ -1,4 +1,4 @@
-use std::{cmp::Ordering, collections::HashMap};
+use std::collections::HashMap;
 
 use super::{compile_pattern::compile_pattern, pattern_in_scope::pattern_in_scope};
 use regex::Regex;
@@ -50,7 +50,7 @@ pub fn safe<S: AsRef<str>>(state: &mut State, input: S, config: SafeConfig) -> S
       }
    }
 
-   positions.sort_by(numerical);
+   positions.sort_by(usize::cmp);
 
    let mut start = config.before.len();
    let end = value.len() - config.after.len();
@@ -97,7 +97,6 @@ pub fn safe<S: AsRef<str>>(state: &mut State, input: S, config: SafeConfig) -> S
          result.push("\\".to_owned());
       } else {
          // Character reference.
-
          result.push(format!("&#x{:X};", value.chars().nth(position).unwrap() as u32).to_owned());
          start += 1;
       }
@@ -109,10 +108,6 @@ pub fn safe<S: AsRef<str>>(state: &mut State, input: S, config: SafeConfig) -> S
    ));
 
    result.join("")
-}
-
-fn numerical(a: &usize, b: &usize) -> Ordering {
-   a.cmp(b)
 }
 
 fn escape_backslashes(value: &str, after: &str) -> String {

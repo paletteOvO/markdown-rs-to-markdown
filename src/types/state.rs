@@ -73,7 +73,10 @@ impl State {
       container_flow(parent, self, info)
    }
 
-   pub fn safe<T: AsRef<str>>(&mut self, value: T, config: SafeConfig) -> String {
+   pub fn safe<T>(&mut self, value: T, config: SafeConfig) -> String
+   where
+      T: AsRef<str>,
+   {
       safe(self, value, config)
    }
 

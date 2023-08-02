@@ -851,7 +851,7 @@ escape it:
 
 <h3 id="code">Code</h3>
 
-To indicate a span of code, wrap it with backtick quotes (`` ` ``).
+To indicate a span of code, wrap it with backtick quotes (``  `  ``).
 Unlike a pre-formatted code block, a code span indicates code within a
 normal paragraph. For example:
 
@@ -1001,7 +1001,7 @@ into something like this:
 &#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
 ```
 
-which will render in a browser as a clickable link to "<address@example.com>".
+which will render in a browser as a clickable link to "address@example.com".
 
 (This sort of entity-encoding trick will indeed fool many, if not
 most, address-harvesting bots, but it definitely won't fool all of
@@ -1036,4 +1036,3 @@ _   underscore
 .   dot
 !   exclamation mark
 ```
-

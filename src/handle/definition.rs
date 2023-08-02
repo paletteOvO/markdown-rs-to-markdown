@@ -22,11 +22,13 @@ pub fn definition_handle(
       Quote::Quote => "Quote",
       Quote::Apostrophe => "Apostrophe",
    };
-   // === """ ? "Quote" : "Apostrophe";
+
    let exit = state.enter("definition");
    let sub_exit = state.enter("label");
+
    let mut tracker = state.create_tracker(info.track_fields.as_ref().unwrap());
    let mut value = tracker.r#move("[").to_owned();
+
    value += tracker.r#move(
       state
          .safe(

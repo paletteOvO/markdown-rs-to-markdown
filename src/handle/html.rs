@@ -13,9 +13,6 @@ pub fn html_handle(_node: &Node, _: Option<&Parents>, _: &mut State, _: &mut Inf
    node.value.clone()
 }
 
-/**
- * @returns {string}
- */
 pub fn html_peek(
    _node: &Node,
    _: Option<&Parents>,

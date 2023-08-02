@@ -1,7 +1,5 @@
 use markdown::mdast::Node;
 
-use crate::Options;
-
 use self::state::State;
 
 pub mod construct;
@@ -30,11 +28,10 @@ pub struct SafeFields {
    pub after: String,
 }
 
-pub type SafeEncodeFields = Vec<String>;
 pub struct SafeConfig {
    pub before: String,
    pub after: String,
-   pub encode: SafeEncodeFields,
+   pub encode: Vec<String>,
 }
 
 impl SafeConfig {
@@ -45,7 +42,7 @@ impl SafeConfig {
       }
    }
 
-   pub fn from(fields: SafeFields, encode: SafeEncodeFields) -> SafeConfig {
+   pub fn from(fields: SafeFields, encode: Vec<String>) -> SafeConfig {
       SafeConfig {
          before: fields.before,
          after: fields.after,

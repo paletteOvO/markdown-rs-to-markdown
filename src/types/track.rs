@@ -1,5 +1,3 @@
-
-
 use super::SafeFields;
 use markdown::unist::Point;
 
@@ -19,7 +17,10 @@ impl Tracker {
       self.track_fields.clone()
    }
 
-   pub fn r#move<T: AsRef<str>>(&mut self, value: T) -> T {
+   pub fn r#move<T>(&mut self, value: T) -> T
+   where
+      T: AsRef<str>,
+   {
       let chunks = regex!(r"\r?\n|\r")
          .split(value.as_ref())
          .collect::<Vec<&str>>();

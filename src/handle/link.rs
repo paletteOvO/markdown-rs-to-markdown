@@ -1,5 +1,3 @@
-//  link.peek = linkPeek
-
 use crate::types::{options::Quote, track::Info, SafeConfig};
 use markdown::mdast::Node;
 
@@ -10,13 +8,6 @@ use crate::{
 
 use super::Handle;
 
-/**
- * @param {Link} node
- * @param {Parents | undefined} _
- * @param {State} state
- * @param {Info} info
- * @returns {string}
- */
 pub fn link_handle(
    _node: &Node,
    _: Option<&Parents>,
@@ -154,12 +145,6 @@ pub fn link_handle(
    value
 }
 
-/**
- * @param {Link} node
- * @param {Parents | undefined} _
- * @param {State} state
- * @returns {string}
- */
 fn link_peek(node: &Node, _: Option<&Parents>, state: &mut State, _: &mut Info) -> String {
    if let Node::Link(_) = node {
       if format_link_as_autolink(node, state) {

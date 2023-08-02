@@ -1001,7 +1001,7 @@ into something like this:
 &#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
 ```
 
-which will render in a browser as a clickable link to "address@example.com".
+which will render in a browser as a clickable link to "[address@example.com](mailto:address@example.com)".
 
 (This sort of entity-encoding trick will indeed fool many, if not
 most, address-harvesting bots, but it definitely won't fool all of

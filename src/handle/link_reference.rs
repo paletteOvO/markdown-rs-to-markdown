@@ -30,7 +30,7 @@ pub fn link_reference_handle(
       panic!("Expected node to be of type Node::LinkReference");
    };
 
-   let r#type = node.reference_kind;
+   let kind = node.reference_kind;
    let exit = state.enter("linkReference");
    let sub_exit = state.enter("label");
    let mut tracker = state.create_tracker(info.track_fields.as_ref().unwrap());
@@ -74,9 +74,9 @@ pub fn link_reference_handle(
    state.stack = stack;
    exit(state);
 
-   if r#type == ReferenceKind::Full || text.is_empty() || text != reference {
+   if kind == ReferenceKind::Full || text.is_empty() || text != reference {
       value += tracker.r#move(format!("{}]", reference).as_str());
-   } else if r#type == ReferenceKind::Shortcut {
+   } else if kind == ReferenceKind::Shortcut {
       // Remove the unwanted `[`.
       value = value[0..value.len() - 1].to_owned();
    } else {

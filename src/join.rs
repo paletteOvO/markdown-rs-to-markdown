@@ -10,9 +10,9 @@ use super::{
 };
 
 /*
- *   In mdast-js, `true` is as passing `1` and `false` means the nodes cannot be
- *   joined by a blank line.
- *   It could also return nothing
+ * In mdast-js, `true` is as passing `1` and `false` means the nodes cannot be
+ * joined by a blank line.
+ * It could also return nothing
  */
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum JoinResult {
@@ -31,6 +31,11 @@ fn join_defaults(left: &Node, right: &Node, parent: &Node, state: &State) -> Joi
       if format_code_as_indented(right, state) {
          if let Node::List(_left) = left {
             return JoinResult::False;
+         }
+         if let Node::Code(left) = left {
+            if format_code_as_indented(left, state) {
+               return JoinResult::False;
+            }
          }
       }
    }

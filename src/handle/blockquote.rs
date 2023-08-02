@@ -17,7 +17,7 @@ pub fn blockquote_handle(
    };
 
    let exit = state.enter("blockquote");
-   let mut tracker = { state.create_tracker(info.track_fields.as_ref().unwrap()) };
+   let mut tracker = state.create_tracker(info.track_fields.as_ref().unwrap());
    tracker.r#move("> ");
    tracker.shift(2);
    let value = state.container_flow(

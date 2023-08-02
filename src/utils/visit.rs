@@ -8,7 +8,6 @@ pub enum VisitResult<T> {
 
 pub fn visit<T>(node: &Node, callback: fn(node: &Node) -> VisitResult<T>) -> Option<T> {
    // N L R
-
    let mut stack = vec![node];
 
    while let Some(node) = stack.pop() {

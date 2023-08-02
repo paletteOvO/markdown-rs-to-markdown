@@ -60,7 +60,6 @@ pub fn inline_code_handle(
          continue;
       };
 
-      // TODO which could cause some problem due to the different of regex of js and rust
       while let Some(r#match) = expression.find(value.as_str()) {
          let mut position = r#match.start();
 
