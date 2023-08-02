@@ -56,7 +56,7 @@ mod tests {
       let markdown_output = to_markdown(
          &root_node,
          Options {
-            ..Options::with_extensions(&[markdown_rs_to_markdown::gfm::gfm])
+            ..Options::default().with_extension(markdown_rs_to_markdown::gfm::Gfm::default())
          },
       );
 

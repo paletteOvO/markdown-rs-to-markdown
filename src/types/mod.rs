@@ -5,6 +5,7 @@ use crate::Options;
 use self::state::State;
 
 pub mod construct;
+pub mod extension;
 pub mod node;
 pub mod options;
 pub mod state;
@@ -57,5 +58,3 @@ impl SafeConfig {
 // It seems just a list of node that has children.
 // I don't how to impl it within Rust's type system.
 pub type Parents = Node;
-
-pub type Extension = fn(&mut Options) -> ();

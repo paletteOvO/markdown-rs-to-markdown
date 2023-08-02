@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use crate::{handle::Handle, join::Join, r#unsafe::Unsafe};
 
-use super::Extension;
+use super::extension::Extension;
 
 #[derive(Debug, Eq, PartialEq, Clone, Copy)]
 pub enum Bullet {
@@ -233,11 +233,11 @@ impl Default for Options {
 }
 
 impl Options {
-   pub fn with_extensions(ext: &[Extension]) -> Options {
-      let mut options = Options::default();
-      for e in ext {
-         e(&mut options);
-      }
-      options
+   pub fn with_extension<E>(mut self, ext: E) -> Options
+   where
+      E: Extension,
+   {
+      ext.configure(&mut self);
+      self
    }
 }
