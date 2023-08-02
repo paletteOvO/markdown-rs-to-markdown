@@ -1,5 +1,7 @@
 use markdown::mdast::Node;
 
+use crate::Options;
+
 use self::state::State;
 
 pub mod construct;
@@ -55,3 +57,5 @@ impl SafeConfig {
 // It seems just a list of node that has children.
 // I don't how to impl it within Rust's type system.
 pub type Parents = Node;
+
+pub type Extension = fn(&mut Options) -> ();

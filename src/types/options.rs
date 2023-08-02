@@ -2,6 +2,8 @@ use std::collections::HashMap;
 
 use crate::{handle::Handle, join::Join, r#unsafe::Unsafe};
 
+use super::Extension;
+
 #[derive(Debug, Eq, PartialEq, Clone, Copy)]
 pub enum Bullet {
    // Normal
@@ -200,7 +202,6 @@ pub struct Options {
    pub handlers: HashMap<&'static str, Handle>,
    pub join: Vec<Join>,
    pub r#unsafe: Vec<Unsafe>,
-   pub extensions: Vec<Options>, // not sure how to use it
 }
 
 impl Default for Options {
@@ -227,7 +228,16 @@ impl Default for Options {
          handlers: hashmap! {},
          join: vec![],
          r#unsafe: vec![],
-         extensions: vec![],
       }
+   }
+}
+
+impl Options {
+   pub fn with_extensions(ext: &[Extension]) -> Options {
+      let mut options = Options::default();
+      for e in ext {
+         e(&mut options);
+      }
+      options
    }
 }
