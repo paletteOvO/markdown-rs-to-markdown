@@ -1,5 +1,3 @@
-use std::borrow::Cow;
-
 use markdown::mdast::Node;
 
 use self::state::State;
