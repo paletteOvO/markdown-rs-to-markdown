@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+
 use markdown::mdast::Node;
 
 use self::state::State;
@@ -24,26 +26,26 @@ pub type AssociationId = fn(Association) -> String;
 pub type Exit = Box<dyn Fn(&mut State)>;
 
 #[derive(Clone)]
-pub struct SafeFields {
-   pub before: String,
-   pub after: String,
+pub struct SafeFields<'a> {
+   pub before: &'a str,
+   pub after: &'a str,
 }
 
-pub struct SafeConfig {
-   pub before: String,
-   pub after: String,
-   pub encode: Vec<String>,
+pub struct SafeConfig<'a> {
+   pub before: &'a str,
+   pub after: &'a str,
+   pub encode: Vec<&'a str>,
 }
 
-impl SafeConfig {
+impl<'a> SafeConfig<'a> {
    pub fn safe_fields(&self) -> SafeFields {
       SafeFields {
-         before: self.before.to_owned(),
-         after: self.after.to_owned(),
+         before: self.before,
+         after: self.after,
       }
    }
 
-   pub fn from(fields: SafeFields, encode: Vec<String>) -> SafeConfig {
+   pub fn from<'b>(fields: SafeFields<'b>, encode: Vec<&'b str>) -> SafeConfig<'b> {
       SafeConfig {
          before: fields.before,
          after: fields.after,

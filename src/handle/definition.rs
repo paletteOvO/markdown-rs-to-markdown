@@ -39,8 +39,8 @@ pub fn definition_handle(
                })
                .as_str(),
             SafeConfig {
-               before: value.to_owned(),
-               after: "]".to_owned(),
+               before: value.as_str(),
+               after: "]",
                encode: vec![],
                //  ...tracker.current()
             },
@@ -64,8 +64,8 @@ pub fn definition_handle(
             .safe(
                node.url.as_str(),
                SafeConfig {
-                  before: value.to_owned(),
-                  after: ">".to_owned(),
+                  before: value.as_str(),
+                  after: ">",
                   encode: vec![], // ...tracker.current()
                },
             )
@@ -81,8 +81,8 @@ pub fn definition_handle(
             .safe(
                node.url.as_str(),
                SafeConfig {
-                  before: value.clone(),
-                  after: if node.title.is_some() { " " } else { "\n" }.to_owned(),
+                  before: value.as_str(),
+                  after: if node.title.is_some() { " " } else { "\n" },
                   encode: vec![],
                   // ...tracker.current()
                },
@@ -102,8 +102,8 @@ pub fn definition_handle(
             .safe(
                node.title.as_ref().unwrap().as_str(),
                SafeConfig {
-                  before: value.clone(),
-                  after: quote_s.to_owned(),
+                  before: value.as_str(),
+                  after: quote_s,
                   encode: vec![],
                   // ...tracker.current()
                },

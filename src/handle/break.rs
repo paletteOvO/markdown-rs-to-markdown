@@ -17,7 +17,7 @@ pub fn hard_break_handle(
       if state.r#unsafe[index].character == "\n"
          && pattern_in_scope(&state.stack, &state.r#unsafe[index])
       {
-         return if regex!(r"[ \t]").is_match(info.safe_fields.as_ref().unwrap().before.as_str()) {
+         return if regex!(r"[ \t]").is_match(info.safe_fields.as_ref().unwrap().before) {
             "".to_owned()
          } else {
             " ".to_owned()

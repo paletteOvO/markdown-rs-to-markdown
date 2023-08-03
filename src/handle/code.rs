@@ -66,9 +66,9 @@ pub fn code_handle(
             .safe(
                code.lang.as_ref().unwrap().as_str(),
                SafeConfig {
-                  before: value.clone(),
-                  after: " ".to_owned(),
-                  encode: vec!["`".to_owned()],
+                  before: value.as_ref(),
+                  after: " ",
+                  encode: vec!["`"],
                },
             )
             .as_str(),
@@ -84,9 +84,9 @@ pub fn code_handle(
             .safe(
                code.meta.as_ref().unwrap().as_str(),
                SafeConfig {
-                  before: value.clone(),
-                  after: "\n".to_owned(),
-                  encode: vec!["`".to_owned()],
+                  before: value.as_ref(),
+                  after: "\n",
+                  encode: vec!["`"],
                },
             )
             .as_str(),

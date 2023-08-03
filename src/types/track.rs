@@ -46,7 +46,7 @@ pub struct TrackFields {
 }
 #[derive(Clone)]
 
-pub struct Info {
+pub struct Info<'a> {
    pub track_fields: Option<TrackFields>,
-   pub safe_fields: Option<SafeFields>,
+   pub safe_fields: Option<SafeFields<'a>>,
 }

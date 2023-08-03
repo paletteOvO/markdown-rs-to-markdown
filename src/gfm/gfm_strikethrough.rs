@@ -47,8 +47,8 @@ fn handle_delete(
          &Info {
             track_fields: Some(tracker.current()),
             safe_fields: Some(SafeFields {
-               before: value.to_owned(),
-               after: "~".to_owned(),
+               before: value.as_str(),
+               after: "~",
             }),
          },
       )

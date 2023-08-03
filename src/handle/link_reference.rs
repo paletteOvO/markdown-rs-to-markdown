@@ -39,8 +39,8 @@ pub fn link_reference_handle(
       _node,
       &Info {
          safe_fields: Some(SafeFields {
-            before: value.to_owned(),
-            after: "]".to_owned(),
+            before: value.as_str(),
+            after: "]",
          }),
          track_fields: Some(tracker.current()),
          //   ...tracker.current()
@@ -64,8 +64,8 @@ pub fn link_reference_handle(
          })
          .as_str(),
       SafeConfig {
-         before: value.to_owned(),
-         after: "]".to_owned(),
+         before: value.as_str(),
+         after: "]",
          encode: vec![],
          //   ...tracker.current()
       },

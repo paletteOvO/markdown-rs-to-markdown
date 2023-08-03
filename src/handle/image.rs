@@ -32,8 +32,8 @@ pub fn image_handle(
          .safe(
             node.alt.as_str(),
             SafeConfig {
-               before: value.clone(),
-               after: "]".to_owned(),
+               before: value.as_str(),
+               after: "]",
                encode: vec![],
             },
          )
@@ -56,8 +56,8 @@ pub fn image_handle(
             .safe(
                node.url.as_str(),
                SafeConfig {
-                  before: value.clone(),
-                  after: ">".to_owned(),
+                  before: value.as_str(),
+                  after: ">",
                   encode: vec![],
                   //...tracker.current()
                },
@@ -73,8 +73,8 @@ pub fn image_handle(
             .safe(
                node.url.as_str(),
                SafeConfig {
-                  before: value.clone(),
-                  after: if node.title.is_some() { " " } else { ")" }.to_owned(),
+                  before: value.as_str(),
+                  after: if node.title.is_some() { " " } else { ")" },
                   encode: vec![],
                },
             )
@@ -92,8 +92,8 @@ pub fn image_handle(
             .safe(
                node.title.as_ref().unwrap().as_str(),
                SafeConfig {
-                  before: value.clone(),
-                  after: quote_s.to_owned(),
+                  before: value.as_str(),
+                  after: quote_s,
                   encode: vec![],
                   // ...tracker.current()
                },

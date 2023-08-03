@@ -43,8 +43,8 @@ pub fn to_markdown(tree: &Node, options: Options) -> String {
 
    let mut info = Info {
       safe_fields: Some(SafeFields {
-         before: "\n".to_owned(),
-         after: "\n".to_owned(),
+         before: "\n",
+         after: "\n",
       }),
       track_fields: Some(track_fields),
    };

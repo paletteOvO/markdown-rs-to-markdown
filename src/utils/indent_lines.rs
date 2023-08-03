@@ -2,10 +2,6 @@ use crate::types::Map;
 use once_cell::sync::Lazy;
 use regex::Regex;
 
-/**
- * @typedef {import('../types.js').IndentLines} IndentLines
- */
-
 static EOL: Lazy<&Regex> = Lazy::new(|| regex!(r"\r?\n|\r"));
 
 pub fn indent_lines(value: &str, map: Map) -> String {

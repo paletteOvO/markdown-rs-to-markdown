@@ -42,8 +42,8 @@ pub fn link_handle(
                _node,
                &Info {
                   safe_fields: Some(SafeFields {
-                     before: value.clone(),
-                     after: ">".to_owned(),
+                     before: value.as_str(),
+                     after: ">",
                   }),
                   track_fields: Some(tracker.current()),
                },
@@ -66,8 +66,8 @@ pub fn link_handle(
             _node,
             &Info {
                safe_fields: Some(SafeFields {
-                  before: value.to_owned(),
-                  after: "](".to_owned(),
+                  before: value.as_str(),
+                  after: "](",
                }),
                track_fields: Some(tracker.current()),
             },
@@ -90,8 +90,8 @@ pub fn link_handle(
             .safe(
                node.url.as_str(),
                SafeConfig {
-                  before: value.to_owned(),
-                  after: ">".to_owned(),
+                  before: value.as_str(),
+                  after: ">",
                   encode: vec![],
                   // ...tracker.current()
                },
@@ -107,8 +107,8 @@ pub fn link_handle(
             .safe(
                node.url.as_str(),
                SafeConfig {
-                  before: value.to_owned(),
-                  after: if node.title.is_some() { " " } else { ")" }.to_owned(),
+                  before: value.as_str(),
+                  after: if node.title.is_some() { " " } else { ")" },
                   encode: vec![],
                   // ...tracker.current()
                },
@@ -127,8 +127,8 @@ pub fn link_handle(
             .safe(
                node.title.as_ref().unwrap().as_str(),
                SafeConfig {
-                  before: value.to_owned(),
-                  after: quote_s.to_owned(),
+                  before: value.as_str(),
+                  after: quote_s,
                   encode: vec![],
                   // ...tracker.current()
                },

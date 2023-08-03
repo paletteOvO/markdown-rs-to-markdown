@@ -24,8 +24,8 @@ pub fn container_flow(parent: &Parents, state: &mut State, info: &Info) -> Strin
          Some(parent),
          &mut Info {
             safe_fields: Some(SafeFields {
-               before: "\n".to_owned(),
-               after: "\n".to_owned(),
+               before: "\n",
+               after: "\n",
             }),
             track_fields: Some(tracker.current()),
          },

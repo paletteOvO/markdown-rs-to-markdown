@@ -31,8 +31,8 @@ pub fn heading_handle(
          _node,
          &Info {
             safe_fields: Some(SafeFields {
-               before: "\n".to_owned(),
-               after: "\n".to_owned(),
+               before: "\n",
+               after: "\n",
             }),
             track_fields: Some(tracker.current()),
          },
@@ -66,8 +66,8 @@ pub fn heading_handle(
       _node,
       &Info {
          safe_fields: Some(SafeFields {
-            before: "# ".to_owned(),
-            after: "\n".to_owned(),
+            before: "# ",
+            after: "\n",
          }),
          track_fields: Some(tracker.current()),
       },

@@ -23,8 +23,8 @@ pub fn strong_handle(
             _node,
             &Info {
                safe_fields: Some(SafeFields {
-                  before: value.clone(),
-                  after: marker_s.to_owned(),
+                  before: value.as_str(),
+                  after: marker_s,
                }),
                track_fields: Some(tracker.current()),
                //  ...tracker.current()

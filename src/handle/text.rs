@@ -14,8 +14,8 @@ pub fn text(_node: &Node, _: Option<&Parents>, state: &mut State, info: &mut Inf
    return state.safe(
       &node.value,
       SafeConfig {
-         before: info.safe_fields.as_ref().unwrap().before.to_owned(),
-         after: info.safe_fields.as_ref().unwrap().after.to_owned(),
+         before: info.safe_fields.as_ref().unwrap().before,
+         after: info.safe_fields.as_ref().unwrap().after,
          encode: vec![],
       },
    );

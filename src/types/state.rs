@@ -41,8 +41,11 @@ impl State {
       (self.association_id)(association)
    }
 
-   pub fn indent_lines(&self, value: &str, map: Map) -> String {
-      (self.indent_lines)(value, map)
+   pub fn indent_lines<S>(&self, value: S, map: Map) -> String
+   where
+      S: AsRef<str>,
+   {
+      (self.indent_lines)(value.as_ref(), map)
    }
 
    pub fn handle(&mut self, node: &Node, parents: Option<&Parents>, info: &mut Info) -> String {

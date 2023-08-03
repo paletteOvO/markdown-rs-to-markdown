@@ -79,7 +79,7 @@ pub fn list_item(
       },
    );
 
-   let value = state.indent_lines(value.as_str(), map);
+   let value = state.indent_lines(value, map);
    exit(state);
 
    value

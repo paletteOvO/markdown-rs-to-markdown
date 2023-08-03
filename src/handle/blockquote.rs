@@ -27,7 +27,7 @@ pub fn blockquote_handle(
          safe_fields: None,
       },
    );
-   let value = state.indent_lines(value.as_str(), Box::new(map));
+   let value = state.indent_lines(value, Box::new(map));
    exit(state);
    value
 }

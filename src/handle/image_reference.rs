@@ -24,8 +24,8 @@ pub fn image_reference_handle(
    let alt = state.safe(
       node.alt.as_str(),
       SafeConfig {
-         before: value.clone(),
-         after: "]".to_owned(),
+         before: value.as_str(),
+         after: "]",
          encode: vec![],
       },
    );
@@ -45,8 +45,8 @@ pub fn image_reference_handle(
          })
          .as_str(),
       SafeConfig {
-         before: value.clone(),
-         after: "]".to_owned(),
+         before: value.as_str(),
+         after: "]",
          encode: vec![],
       },
    );

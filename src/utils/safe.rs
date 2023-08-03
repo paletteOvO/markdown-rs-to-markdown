@@ -12,7 +12,7 @@ struct SafeInfo {
 }
 
 pub fn safe<S: AsRef<str>>(state: &mut State, input: S, config: SafeConfig) -> String {
-   let value = config.before.clone() + input.as_ref() + config.after.as_ref();
+   let value = String::new() + config.before + input.as_ref() + config.after;
    let mut positions: Vec<usize> = vec![];
    let mut result: Vec<String> = vec![];
    let mut infos: HashMap<usize, SafeInfo> = hashmap! {};
@@ -91,7 +91,7 @@ pub fn safe<S: AsRef<str>>(state: &mut State, input: S, config: SafeConfig) -> S
          && (config.encode.is_empty()
             || !config
                .encode
-               .contains(&value.chars().nth(position).unwrap().to_string()))
+               .contains(&value.chars().nth(position).unwrap().to_string().as_str()))
       {
          // Character escape.
          result.push("\\".to_owned());
@@ -102,10 +102,7 @@ pub fn safe<S: AsRef<str>>(state: &mut State, input: S, config: SafeConfig) -> S
       }
    }
 
-   result.push(escape_backslashes(
-      value[start..end].as_ref(),
-      config.after.as_str(),
-   ));
+   result.push(escape_backslashes(value[start..end].as_ref(), config.after));
 
    result.join("")
 }

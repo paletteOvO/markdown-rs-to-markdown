@@ -30,8 +30,8 @@ fn emphasis_handle(
             &Info {
                track_fields: Some(tracker.current()),
                safe_fields: Some(SafeFields {
-                  before: value.to_owned(),
-                  after: marker_s.to_owned(),
+                  before: value.as_str(),
+                  after: marker_s,
                }),
             },
          )

@@ -4,7 +4,7 @@ pub fn container_phrasing(parent: &Parents, state: &mut State, info: &Info) -> S
    let tmp = vec![];
    let children = parent.children().unwrap_or(&tmp);
    let mut results = vec![] as Vec<String>;
-   let mut before = info.safe_fields.as_ref().unwrap().before.clone();
+   let mut before = info.safe_fields.as_ref().unwrap().before.to_owned();
 
    state.index_stack.push(-1);
 
@@ -28,8 +28,8 @@ pub fn container_phrasing(parent: &Parents, state: &mut State, info: &Info) -> S
             state,
             &mut Info {
                safe_fields: Some(SafeFields {
-                  before: "".to_owned(),
-                  after: "".to_owned(),
+                  before: "",
+                  after: "",
                }),
                track_fields: Some(tracker.current()),
             },
@@ -39,7 +39,7 @@ pub fn container_phrasing(parent: &Parents, state: &mut State, info: &Info) -> S
          .unwrap()
          .to_string()
       } else {
-         info.safe_fields.as_ref().unwrap().after.clone()
+         info.safe_fields.as_ref().unwrap().after.to_owned()
       };
 
       // In some cases, html (text) can be found in phrasing right after an eol.
@@ -65,8 +65,8 @@ pub fn container_phrasing(parent: &Parents, state: &mut State, info: &Info) -> S
          Some(parent),
          &mut Info {
             safe_fields: Some(SafeFields {
-               before: before.clone(),
-               after: after.clone(),
+               before: before.as_str(),
+               after: after.as_str(),
             }),
             track_fields: Some(tracker.current()),
          },
