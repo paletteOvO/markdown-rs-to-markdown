@@ -1,6 +1,6 @@
 pub trait Node {
    fn label(self) -> Option<String>;
-   fn r#type(self) -> &'static str;
+   fn kind(self) -> &'static str;
    fn identifier(self) -> Option<String>;
    fn value(self) -> Option<String>;
    fn spread(self) -> Option<bool>;
@@ -19,7 +19,7 @@ impl Node for &markdown::mdast::Node {
          _ => None,
       }
    }
-   fn r#type(self) -> &'static str {
+   fn kind(self) -> &'static str {
       #[allow(unused_variables)]
       match self {
          // from https://github.com/syntax-tree/mdast

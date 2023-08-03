@@ -16,7 +16,7 @@ pub fn container_phrasing(parent: &Parents, state: &mut State, info: &Info) -> S
 
       let after = if index + 1 < children.len() {
          // the mdast's type is a nightmare
-         let handle = state.handlers[children[index + 1].r#type()];
+         let handle = state.handlers[children[index + 1].kind()];
          let handler = if handle.peek.is_some() {
             handle.peek.unwrap()
          } else {
@@ -48,7 +48,7 @@ pub fn container_phrasing(parent: &Parents, state: &mut State, info: &Info) -> S
       // As we can’t escape or so to prevent it from happening, we take a somewhat
       // reasonable approach: replace that eol with a space.
       // See: <https://github.com/syntax-tree/mdast-util-to-markdown/issues/15>
-      if !results.is_empty() && (before == "\r" || before == "\n") && child.r#type() == "html" {
+      if !results.is_empty() && (before == "\r" || before == "\n") && child.kind() == "html" {
          let l = results.len();
          results[l - 1] = regex!("(\r?\n|\r)$")
             .replace(&results[results.len() - 1], " ")

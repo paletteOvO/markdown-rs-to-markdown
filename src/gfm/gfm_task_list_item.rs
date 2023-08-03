@@ -44,8 +44,7 @@ fn list_item_with_task_list_item(
 
    let head = node.children.get(0);
 
-   let checkable =
-      node.checked.is_some() && head.is_some() && head.unwrap().r#type() == "paragraph";
+   let checkable = node.checked.is_some() && head.is_some() && head.unwrap().kind() == "paragraph";
    let checkbox = if checkable {
       let checked = node.checked.as_ref().unwrap();
       if *checked {
