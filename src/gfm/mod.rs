@@ -1,9 +1,12 @@
-mod gfm_strikethrough;
-mod gfm_task_list_item;
-mod gfm_autolink;
-pub use self::gfm_strikethrough::GfmStrikethrough;
-pub use self::gfm_task_list_item::GfmTaskListItem;
-pub use self::gfm_autolink::GfmAutolinkLiteral;
+mod autolink_literal;
+mod footnote;
+mod strikethrough;
+mod task_list_item;
+
+pub use self::autolink_literal::GfmAutolinkLiteral;
+pub use self::footnote::GfmFootnote;
+pub use self::strikethrough::GfmStrikethrough;
+pub use self::task_list_item::GfmTaskListItem;
 
 use crate::{types::extension::Extension, Options};
 
@@ -52,11 +55,6 @@ impl Extension for Gfm {
       .configure(options);
       GfmTaskListItem {}.configure(options);
    }
-}
-
-pub struct GfmFootnote {}
-impl Extension for GfmFootnote {
-   fn configure(&self, options: &mut Options) {}
 }
 
 pub struct GfmTable<'a> {

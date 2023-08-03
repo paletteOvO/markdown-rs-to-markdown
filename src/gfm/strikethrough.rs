@@ -26,7 +26,7 @@ impl Extension for GfmStrikethrough {
          "delete",
          crate::handle::Handle {
             peek: None,
-            handle: crate::gfm::gfm_strikethrough::handle_delete,
+            handle: crate::gfm::strikethrough::handle_delete,
          },
       );
    }

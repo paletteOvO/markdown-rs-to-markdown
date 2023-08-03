@@ -34,7 +34,7 @@ impl Node for &markdown::mdast::Node {
          markdown::mdast::Node::InlineMath(x) => "inlineMath",
          markdown::mdast::Node::Delete(x) => "delete",
          markdown::mdast::Node::Emphasis(x) => "emphasis",
-         markdown::mdast::Node::FootnoteReference(x) => "footnoteDefinition",
+         markdown::mdast::Node::FootnoteReference(x) => "footnoteReference",
          markdown::mdast::Node::Html(x) => "html",
          markdown::mdast::Node::Image(x) => "image",
          markdown::mdast::Node::ImageReference(x) => "imageReference",

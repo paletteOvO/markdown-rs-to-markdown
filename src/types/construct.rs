@@ -31,6 +31,10 @@ pub enum ConstructName {
    TaskListItem,
    #[cfg(feature = "gfm")]
    Strikethrough,
+   #[cfg(feature = "gfm")]
+   FootnoteDefinition,
+   #[cfg(feature = "gfm")]
+   FootnoteReference,
 }
 
 impl From<&str> for ConstructName {
@@ -39,6 +43,8 @@ impl From<&str> for ConstructName {
       match value {
          "taskListItem" => return ConstructName::TaskListItem,
          "strikethrough" => return ConstructName::Strikethrough,
+         "footnoteDefinition" => return ConstructName::FootnoteDefinition,
+         "footnoteReference" => return ConstructName::FootnoteReference,
          _ => (),
       };
       match value {
@@ -86,6 +92,8 @@ impl From<ConstructName> for &str {
       match value {
          ConstructName::TaskListItem => return "taskListItem",
          ConstructName::Strikethrough => return "strikethrough",
+         ConstructName::FootnoteDefinition => return "footnoteDefinition",
+         ConstructName::FootnoteReference => return "footnoteReference",
          _ => (),
       };
       match value {
