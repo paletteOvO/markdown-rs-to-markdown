@@ -27,6 +27,7 @@ pub enum ConstructName {
    Strong,
    TitleApostrophe,
    TitleQuote,
+   #[cfg(feature = "gfm")]
    TaskListItem,
 }
 
@@ -60,6 +61,7 @@ impl From<&str> for ConstructName {
          "strong" => ConstructName::Strong,
          "titleApostrophe" => ConstructName::TitleApostrophe,
          "titleQuote" => ConstructName::TitleQuote,
+         #[cfg(feature = "gfm")]
          "taskListItem" => ConstructName::TaskListItem,
          _ => panic!("Unknown construct name: {}", value),
       }
@@ -102,6 +104,7 @@ impl From<ConstructName> for &str {
          ConstructName::Strong => "strong",
          ConstructName::TitleApostrophe => "titleApostrophe",
          ConstructName::TitleQuote => "titleQuote",
+         #[cfg(feature = "gfm")]
          ConstructName::TaskListItem => "taskListItem",
       }
    }

@@ -42,6 +42,7 @@ mod tests {
       assert!(markdown_output == expected);
    }
 
+   #[cfg(feature = "gfm")]
    #[test]
    pub fn test_to_markdown_gfm() {
       let markdown = read_test_file("TEST.md");
@@ -69,6 +70,7 @@ mod tests {
       assert!(markdown_output == expected);
    }
 
+   #[cfg(feature = "gfm")]
    #[test]
    pub fn test_to_markdown_gfm_task_list_item() {
       let markdown = "* [ ] aaa

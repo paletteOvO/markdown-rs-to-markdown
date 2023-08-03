@@ -20,7 +20,9 @@ mod r#unsafe;
 mod utils;
 use self::join::JoinResult;
 
+#[cfg(feature = "gfm")]
 pub mod gfm;
+
 pub use self::types::options::Options;
 
 pub fn to_markdown(tree: &Node, options: Options) -> String {
