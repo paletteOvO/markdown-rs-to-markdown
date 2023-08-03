@@ -68,4 +68,28 @@ mod tests {
 
       assert!(markdown_output == expected);
    }
+
+   #[test]
+   pub fn test_to_markdown_gfm_task_list_item() {
+      let markdown = "* [ ] aaa
+* [x] bbb
+* ccc
+";
+      let expected = markdown.clone();
+
+      let mut options = ParseOptions::gfm();
+      options.constructs = Constructs {
+         // frontmatter: true,
+         ..Constructs::gfm()
+      };
+      let root_node = to_mdast(markdown, &options).unwrap();
+      let markdown_output = to_markdown(
+         &root_node,
+         Options {
+            ..Options::default().with_extension(markdown_rs_to_markdown::gfm::Gfm::default())
+         },
+      );
+
+      assert!(markdown_output == expected);
+   }
 }

@@ -23,6 +23,7 @@ pub type AssociationId = fn(Association) -> String;
 // does we actually need this?
 pub type Exit = Box<dyn Fn(&mut State)>;
 
+#[derive(Clone)]
 pub struct SafeFields {
    pub before: String,
    pub after: String,

@@ -27,6 +27,7 @@ pub enum ConstructName {
    Strong,
    TitleApostrophe,
    TitleQuote,
+   TaskListItem,
 }
 
 impl From<&str> for ConstructName {
@@ -59,6 +60,7 @@ impl From<&str> for ConstructName {
          "strong" => ConstructName::Strong,
          "titleApostrophe" => ConstructName::TitleApostrophe,
          "titleQuote" => ConstructName::TitleQuote,
+         "taskListItem" => ConstructName::TaskListItem,
          _ => panic!("Unknown construct name: {}", value),
       }
    }
@@ -100,6 +102,7 @@ impl From<ConstructName> for &str {
          ConstructName::Strong => "strong",
          ConstructName::TitleApostrophe => "titleApostrophe",
          ConstructName::TitleQuote => "titleQuote",
+         ConstructName::TaskListItem => "taskListItem",
       }
    }
 }

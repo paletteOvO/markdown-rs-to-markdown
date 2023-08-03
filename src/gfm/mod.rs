@@ -1,4 +1,7 @@
-use crate::{Options, types::extension::Extension};
+mod gfm_task_list_item;
+pub use self::gfm_task_list_item::GfmTaskListItem;
+
+use crate::{types::extension::Extension, Options};
 
 #[derive(Debug, Clone)]
 pub struct GfmOptions {
@@ -66,10 +69,5 @@ pub struct GfmTable<'a> {
    options: &'a GfmOptions,
 }
 impl Extension for GfmTable<'_> {
-   fn configure(&self, options: &mut Options) {}
-}
-
-pub struct GfmTaskListItem {}
-impl Extension for GfmTaskListItem {
    fn configure(&self, options: &mut Options) {}
 }

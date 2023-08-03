@@ -15,7 +15,7 @@ pub struct Unsafe {
 }
 
 impl Unsafe {
-   fn new<Str: AsRef<str>>(character: Str) -> Unsafe {
+   pub fn new<Str: AsRef<str>>(character: Str) -> Unsafe {
       return Unsafe {
          character: character.as_ref().to_owned(),
          in_construct: vec![],

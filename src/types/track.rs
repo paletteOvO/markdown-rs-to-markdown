@@ -44,6 +44,7 @@ pub struct TrackFields {
    pub now: Point,
    pub line_shift: usize,
 }
+#[derive(Clone)]
 
 pub struct Info {
    pub track_fields: Option<TrackFields>,
