@@ -1,5 +1,7 @@
 mod gfm_task_list_item;
+mod gfm_strikethrough;
 pub use self::gfm_task_list_item::GfmTaskListItem;
+pub use self::gfm_strikethrough::GfmStrikethrough;
 
 use crate::{types::extension::Extension, Options};
 
@@ -57,11 +59,6 @@ impl Extension for GfmAutolinkLiteral {
 
 pub struct GfmFootnote {}
 impl Extension for GfmFootnote {
-   fn configure(&self, options: &mut Options) {}
-}
-
-pub struct GfmStrikethrough {}
-impl Extension for GfmStrikethrough {
    fn configure(&self, options: &mut Options) {}
 }
 

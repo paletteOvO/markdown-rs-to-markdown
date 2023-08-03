@@ -29,10 +29,18 @@ pub enum ConstructName {
    TitleQuote,
    #[cfg(feature = "gfm")]
    TaskListItem,
+   #[cfg(feature = "gfm")]
+   Strikethrough,
 }
 
 impl From<&str> for ConstructName {
    fn from(value: &str) -> Self {
+      #[cfg(feature = "gfm")]
+      match value {
+         "taskListItem" => return ConstructName::TaskListItem,
+         "strikethrough" => return ConstructName::Strikethrough,
+         _ => (),
+      };
       match value {
          "autolink" => ConstructName::Autolink,
          "blockquote" => ConstructName::Blockquote,
@@ -61,8 +69,6 @@ impl From<&str> for ConstructName {
          "strong" => ConstructName::Strong,
          "titleApostrophe" => ConstructName::TitleApostrophe,
          "titleQuote" => ConstructName::TitleQuote,
-         #[cfg(feature = "gfm")]
-         "taskListItem" => ConstructName::TaskListItem,
          _ => panic!("Unknown construct name: {}", value),
       }
    }
@@ -76,6 +82,12 @@ impl From<String> for ConstructName {
 
 impl From<ConstructName> for &str {
    fn from(value: ConstructName) -> Self {
+      #[cfg(feature = "gfm")]
+      match value {
+         ConstructName::TaskListItem => return "taskListItem",
+         ConstructName::Strikethrough => return "strikethrough",
+         _ => (),
+      };
       match value {
          ConstructName::Autolink => "autolink",
          ConstructName::Blockquote => "blockquote",
@@ -104,8 +116,7 @@ impl From<ConstructName> for &str {
          ConstructName::Strong => "strong",
          ConstructName::TitleApostrophe => "titleApostrophe",
          ConstructName::TitleQuote => "titleQuote",
-         #[cfg(feature = "gfm")]
-         ConstructName::TaskListItem => "taskListItem",
+         _ => unreachable!(),
       }
    }
 }
