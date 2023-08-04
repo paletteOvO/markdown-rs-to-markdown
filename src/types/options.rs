@@ -202,6 +202,8 @@ pub struct Options {
    pub handlers: HashMap<&'static str, Handle>,
    pub join: Vec<Join>,
    pub r#unsafe: Vec<Unsafe>,
+   #[cfg(feature = "gfm")]
+   pub gfm_options: Option<crate::gfm::GfmOptions>,
 }
 
 impl Default for Options {
@@ -228,6 +230,8 @@ impl Default for Options {
          handlers: hashmap! {},
          join: vec![],
          r#unsafe: vec![],
+         #[cfg(feature = "gfm")]
+         gfm_options: None,
       }
    }
 }

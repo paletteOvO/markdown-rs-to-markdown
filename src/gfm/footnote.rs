@@ -1,5 +1,5 @@
 use crate::{
-   types::{node::Node as _, state::State, track::Info, Association, SafeConfig},
+   types::{state::State, track::Info, Association, SafeConfig},
    Parents,
 };
 use markdown::mdast::Node;
@@ -42,7 +42,7 @@ impl Extension for GfmFootnote {
 
 pub fn footnote_definition_handle(
    _node: &Node,
-   parent: Option<&Parents>,
+   _parent: Option<&Parents>,
    state: &mut State,
    info: &mut Info,
 ) -> String {

@@ -1,27 +1,32 @@
 mod autolink_literal;
 mod footnote;
+mod markdown_table;
 mod strikethrough;
+mod table;
 mod task_list_item;
 
 pub use self::autolink_literal::GfmAutolinkLiteral;
 pub use self::footnote::GfmFootnote;
 pub use self::strikethrough::GfmStrikethrough;
+pub use self::table::GfmTable;
 pub use self::task_list_item::GfmTaskListItem;
 
 use crate::{types::extension::Extension, Options};
+
+use unicode_width::UnicodeWidthStr;
 
 #[derive(Debug, Clone)]
 pub struct GfmOptions {
    // gfm table options
    pub table_cell_padding: bool,
    pub table_pipe_align: bool,
-   // gfm table markdown table options
-   pub align: Option<String>,
-   pub padding: Option<bool>,
-   pub delimiter_start: Option<bool>,
-   pub delimiter_end: Option<bool>,
-   pub align_delimiters: Option<bool>,
-   pub string_length: Option<fn(str: &str) -> usize>,
+   // markdown table options
+   // pub align: Option<Vec<AlignKind>>,
+   // pub padding: Option<bool>,
+   // pub delimiter_start: Option<bool>,
+   // pub delimiter_end: Option<bool>,
+   // pub align_delimiters: Option<bool>,
+   pub string_length: fn(str: &str) -> usize,
 }
 
 impl Default for GfmOptions {
@@ -29,12 +34,12 @@ impl Default for GfmOptions {
       GfmOptions {
          table_cell_padding: true,
          table_pipe_align: true,
-         align: None,
-         padding: None,
-         delimiter_start: None,
-         delimiter_end: None,
-         align_delimiters: None,
-         string_length: None,
+         // align: None,
+         // padding: None,
+         // delimiter_start: None,
+         // delimiter_end: None,
+         // align_delimiters: None,
+         string_length: UnicodeWidthStr::width,
       }
    }
 }
@@ -55,11 +60,4 @@ impl Extension for Gfm {
       .configure(options);
       GfmTaskListItem {}.configure(options);
    }
-}
-
-pub struct GfmTable<'a> {
-   options: &'a GfmOptions,
-}
-impl Extension for GfmTable<'_> {
-   fn configure(&self, options: &mut Options) {}
 }

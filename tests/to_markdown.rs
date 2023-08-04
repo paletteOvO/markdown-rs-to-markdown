@@ -136,4 +136,35 @@ mod tests {
 
       assert!(markdown_output == expected);
    }
+
+   #[cfg(feature = "gfm")]
+   #[test]
+   pub fn test_to_markdown_gfm_table() {
+      let markdown = "\
+| Branch  | Commit           |
+| ------- | ---------------- |
+| main    | 0123456789abcdef |
+| staging | fedcba9876543210 |";
+
+      let expected = "\
+| Branch  | Commit           |
+| ------- | ---------------- |
+| main    | 0123456789abcdef |
+| staging | fedcba9876543210 |\n";
+
+      let mut options = ParseOptions::default();
+      options.constructs = Constructs {
+         // frontmatter: true,
+         ..Constructs::default()
+      };
+      let root_node = to_mdast(markdown, &options).unwrap();
+      let markdown_output = to_markdown(
+         &root_node,
+         Options {
+            ..Options::default()
+         },
+      );
+
+      assert!(markdown_output == expected);
+   }
 }
