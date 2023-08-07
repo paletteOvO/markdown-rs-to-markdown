@@ -50,6 +50,7 @@ impl State {
 
    pub fn handle(&mut self, node: &Node, parents: Option<&Parents>, info: &mut Info) -> String {
       if let Some(handler) = self.handlers.get(node.kind()) {
+         println!("Handling node `{}`", node.kind());
          handler.clone().handle(node, parents, self, info)
       } else {
          panic!("Cannot handle unknown node `{}`", node.kind());

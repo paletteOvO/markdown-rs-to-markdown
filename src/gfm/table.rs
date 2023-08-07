@@ -87,7 +87,7 @@ pub fn inline_code_with_table_handle(
    _node: &Node,
    parent: Option<&Parents>,
    state: &mut State,
-   info: &mut Info,
+   _info: &mut Info,
 ) -> String {
    let value = HANDLERS["inline_code"].handle(
       _node,
@@ -174,11 +174,7 @@ pub fn table_row_handle(
    info: &mut Info,
 ) -> String {
    let row = handle_table_row_as_data(_node, state, info);
-   let value = serialize_data(
-      state.options.gfm_options.as_ref().unwrap(),
-      &vec![row],
-      &[],
-   );
+   let value = serialize_data(state.options.gfm_options.as_ref().unwrap(), &vec![row], &[]);
    // `markdown-table` will always add an align row
    value[0..value.find('\n').unwrap_or(value.len())].to_owned()
 }

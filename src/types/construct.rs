@@ -35,8 +35,13 @@ pub enum ConstructName {
    FootnoteDefinition,
    #[cfg(feature = "gfm")]
    FootnoteReference,
+
+   #[cfg(feature = "gfm")]
+   Table,
    #[cfg(feature = "gfm")]
    TableCell,
+   #[cfg(feature = "gfm")]
+   TableRow,
 }
 
 impl From<&str> for ConstructName {
@@ -47,7 +52,9 @@ impl From<&str> for ConstructName {
          "strikethrough" => return ConstructName::Strikethrough,
          "footnoteDefinition" => return ConstructName::FootnoteDefinition,
          "footnoteReference" => return ConstructName::FootnoteReference,
+         "table" => return ConstructName::Table,
          "tableCell" => return ConstructName::TableCell,
+         "tableRow" => return ConstructName::TableRow,
          _ => (),
       };
       match value {
@@ -97,7 +104,9 @@ impl From<ConstructName> for &str {
          ConstructName::Strikethrough => return "strikethrough",
          ConstructName::FootnoteDefinition => return "footnoteDefinition",
          ConstructName::FootnoteReference => return "footnoteReference",
+         ConstructName::Table => return "table",
          ConstructName::TableCell => return "tableCell",
+         ConstructName::TableRow => return "tableRow",
          _ => (),
       };
       match value {

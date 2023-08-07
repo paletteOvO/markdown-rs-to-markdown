@@ -38,7 +38,7 @@ pub fn markdown_table(table: &Vec<Vec<String>>, options: &MarkdownTableOption) -
 
    let mut longest_cell_by_column: Vec<usize> = vec![0; most_cells_per_row];
 
-   for (row_index, row) in table.iter().enumerate() {
+   for row in table.iter() {
       let mut cell_row: Vec<String> = vec![];
       let mut sizes: Vec<usize> = vec![];
 

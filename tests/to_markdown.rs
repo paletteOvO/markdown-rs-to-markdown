@@ -141,8 +141,8 @@ mod tests {
    #[test]
    pub fn test_to_markdown_gfm_table() {
       let markdown = "\
-| Branch  | Commit           |
-| ------- | ---------------- |
+| Branch  | Commit |
+| ------- | -- |
 | main    | 0123456789abcdef |
 | staging | fedcba9876543210 |";
 
@@ -152,19 +152,18 @@ mod tests {
 | main    | 0123456789abcdef |
 | staging | fedcba9876543210 |\n";
 
-      let mut options = ParseOptions::default();
+      let mut options = ParseOptions::gfm();
       options.constructs = Constructs {
          // frontmatter: true,
-         ..Constructs::default()
+         ..Constructs::gfm()
       };
       let root_node = to_mdast(markdown, &options).unwrap();
       let markdown_output = to_markdown(
          &root_node,
          Options {
-            ..Options::default()
+            ..Options::default().with_extension(markdown_rs_to_markdown::gfm::Gfm::default())
          },
       );
-
       assert!(markdown_output == expected);
    }
 }
