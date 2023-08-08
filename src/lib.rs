@@ -25,6 +25,8 @@ pub mod gfm;
 
 pub use self::types::options::Options;
 
+pub use self::types::options;
+
 pub fn to_markdown(tree: &Node, options: Options) -> String {
    let mut state = State::new(options);
 
